@@ -1,0 +1,96 @@
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm
+index 3d91bae..0870791 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm
+@@ -23,8 +23,13 @@
+ #if RCT_NEW_ARCH_ENABLED
+ #include "RNIContextMenuButtonComponentDescriptor.h"
+ 
++#if __has_include(<react_native_ios_utilities/RNIBaseViewState.h>)
+ #include <react_native_ios_utilities/RNIBaseViewState.h>
+ #include <react_native_ios_utilities/RNIBaseViewProps.h>
++#else
++#include <react-native-ios-utilities/RNIBaseViewState.h>
++#include <react-native-ios-utilities/RNIBaseViewProps.h>
++#endif
+ 
+ #import <React/RCTConversions.h>
+ #import <React/RCTFabricComponentsPlugins.h>
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h
+index 0fe922b..7cf637e 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h
+@@ -11,7 +11,11 @@
+ #include "RNIContextMenuButtonShadowNode.h"
+ #include "RNIBaseViewComponentDescriptor.h"
+ 
++#if __has_include(<react_native_ios_utilities/RNIBaseViewState.h>)
+ #include <react_native_ios_utilities/RNIBaseViewState.h>
++#else
++#include <react-native-ios-utilities/RNIBaseViewState.h>
++#endif
+ 
+ #include <react/renderer/core/ConcreteComponentDescriptor.h>
+ 
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h
+index ac1b293..d9ffbb6 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h
+@@ -8,9 +8,15 @@
+ #if __cplusplus
+ #pragma once
+ 
++#if __has_include(<react_native_ios_utilities/RNIBaseViewShadowNode.h>)
+ #include <react_native_ios_utilities/RNIBaseViewShadowNode.h>
+ #include <react_native_ios_utilities/RNIBaseViewProps.h>
+ #include <react_native_ios_utilities/RNIBaseViewEventEmitter.h>
++#else
++#include <react-native-ios-utilities/RNIBaseViewShadowNode.h>
++#include <react-native-ios-utilities/RNIBaseViewProps.h>
++#include <react-native-ios-utilities/RNIBaseViewEventEmitter.h>
++#endif
+ 
+ #include <react/renderer/components/RNIContextMenuViewSpec/EventEmitters.h>
+ #include <react/renderer/components/RNIContextMenuViewSpec/Props.h>
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h
+index 2e30bbb..5aa27cd 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h
+@@ -8,11 +8,17 @@
+ #if __cplusplus
+ #pragma once
+ 
++
+ #include "RNIContextMenuViewShadowNode.h"
+ #include "RNIBaseViewComponentDescriptor.h"
+ 
++#if __has_include(<react_native_ios_utilities/RNIBaseViewComponentDescriptor.h>)
+ #include <react_native_ios_utilities/RNIBaseViewComponentDescriptor.h>
+ #include <react_native_ios_utilities/RNIBaseViewState.h>
++#else
++#include <react-native-ios-utilities/RNIBaseViewComponentDescriptor.h>
++#include <react-native-ios-utilities/RNIBaseViewState.h>
++#endif
+ 
+ #include <react/renderer/core/ConcreteComponentDescriptor.h>
+ 
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h
+index a72e1fc..d0a0106 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h
+@@ -8,9 +8,15 @@
+ #if __cplusplus
+ #pragma once
+ 
++#if __has_include(<react_native_ios_utilities/RNIBaseViewShadowNode.h>)
+ #include <react_native_ios_utilities/RNIBaseViewShadowNode.h>
+ #include <react_native_ios_utilities/RNIBaseViewProps.h>
+ #include <react_native_ios_utilities/RNIBaseViewEventEmitter.h>
++#else
++#include <react-native-ios-utilities/RNIBaseViewShadowNode.h>
++#include <react-native-ios-utilities/RNIBaseViewProps.h>
++#include <react-native-ios-utilities/RNIBaseViewEventEmitter.h>
++#endif
+ 
+ #include <react/renderer/components/RNIContextMenuViewSpec/EventEmitters.h>
+ #include <react/renderer/components/RNIContextMenuViewSpec/Props.h>

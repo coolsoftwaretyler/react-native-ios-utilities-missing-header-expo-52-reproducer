@@ -1,57 +1,173 @@
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.h
+index 6b142be..1efb623 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.h
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.h
+@@ -5,11 +5,9 @@
+ //  Created by Dominic Go on 8/24/24.
+ //
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseView.h>)
+-#import <react_native_ios_utilities/RNIBaseView.h>
+-#else
+-#import <react-native-ios-utilities/RNIBaseView.h>
+-#endif
++#import "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseView.h)
+ 
+ #if RCT_NEW_ARCH_ENABLED
+ #import <React/RCTViewComponentView.h>
 diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm
-index 3d91bae..0870791 100644
+index 3d91bae..1aba142 100644
 --- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm
 +++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButton.mm
-@@ -23,8 +23,13 @@
+@@ -7,24 +7,16 @@
+ 
+ #import "RNIContextMenuButton.h"
+ #import "../Swift.h"
++#import "../RNIHeaderUtils.h"
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseView.h>)
+-#import <react_native_ios_utilities/RNIBaseView.h>
+-#import <react_native_ios_utilities/RNIContentViewParentDelegate.h>
+-#import <react_native_ios_utilities/UIApplication+RNIHelpers.h>
+-#import <react_native_ios_utilities/RNIObjcUtils.h>
+-#else
+-#import <react-native-ios-utilities/RNIBaseView.h>
+-#import <react-native-ios-utilities/RNIContentViewParentDelegate.h>
+-#import <react-native-ios-utilities/UIApplication+RNIHelpers.h>
+-#import <react-native-ios-utilities/RNIObjcUtils.h>
+-#endif
++#import RNI_INCLUDE_HEADER(RNIContentViewParentDelegate.h)
++#import RNI_INCLUDE_HEADER(UIApplication+RNIHelpers.h)
++#import RNI_INCLUDE_HEADER(RNIObjcUtils.h)
+ 
  #if RCT_NEW_ARCH_ENABLED
  #include "RNIContextMenuButtonComponentDescriptor.h"
- 
-+#if __has_include(<react_native_ios_utilities/RNIBaseViewState.h>)
- #include <react_native_ios_utilities/RNIBaseViewState.h>
- #include <react_native_ios_utilities/RNIBaseViewProps.h>
-+#else
-+#include <react-native-ios-utilities/RNIBaseViewState.h>
-+#include <react-native-ios-utilities/RNIBaseViewProps.h>
-+#endif
+-
+-#include <react_native_ios_utilities/RNIBaseViewState.h>
+-#include <react_native_ios_utilities/RNIBaseViewProps.h>
++#import RNI_INCLUDE_HEADER(RNIBaseViewState.h)
++#import RNI_INCLUDE_HEADER(RNIBaseViewProps.h)
  
  #import <React/RCTConversions.h>
  #import <React/RCTFabricComponentsPlugins.h>
 diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h
-index 0fe922b..7cf637e 100644
+index 0fe922b..d8e05ff 100644
 --- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h
 +++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonComponentDescriptor.h
-@@ -11,7 +11,11 @@
+@@ -10,8 +10,9 @@
+ 
  #include "RNIContextMenuButtonShadowNode.h"
  #include "RNIBaseViewComponentDescriptor.h"
++#include "../RNIHeaderUtils.h"
  
-+#if __has_include(<react_native_ios_utilities/RNIBaseViewState.h>)
- #include <react_native_ios_utilities/RNIBaseViewState.h>
-+#else
-+#include <react-native-ios-utilities/RNIBaseViewState.h>
-+#endif
+-#include <react_native_ios_utilities/RNIBaseViewState.h>
++#import RNI_INCLUDE_HEADER(RNIBaseViewState.h)
  
  #include <react/renderer/core/ConcreteComponentDescriptor.h>
  
 diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h
-index ac1b293..d9ffbb6 100644
+index ac1b293..4e42a6f 100644
 --- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h
 +++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonShadowNode.h
-@@ -8,9 +8,15 @@
+@@ -8,9 +8,11 @@
  #if __cplusplus
  #pragma once
  
-+#if __has_include(<react_native_ios_utilities/RNIBaseViewShadowNode.h>)
- #include <react_native_ios_utilities/RNIBaseViewShadowNode.h>
- #include <react_native_ios_utilities/RNIBaseViewProps.h>
- #include <react_native_ios_utilities/RNIBaseViewEventEmitter.h>
-+#else
-+#include <react-native-ios-utilities/RNIBaseViewShadowNode.h>
-+#include <react-native-ios-utilities/RNIBaseViewProps.h>
-+#include <react-native-ios-utilities/RNIBaseViewEventEmitter.h>
-+#endif
+-#include <react_native_ios_utilities/RNIBaseViewShadowNode.h>
+-#include <react_native_ios_utilities/RNIBaseViewProps.h>
+-#include <react_native_ios_utilities/RNIBaseViewEventEmitter.h>
++#include "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseViewShadowNode.h)
++#import RNI_INCLUDE_HEADER(RNIBaseViewProps.h)
++#import RNI_INCLUDE_HEADER(RNIBaseViewEventEmitter.h)
  
  #include <react/renderer/components/RNIContextMenuViewSpec/EventEmitters.h>
  #include <react/renderer/components/RNIContextMenuViewSpec/Props.h>
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonViewManager.mm b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonViewManager.mm
+index 4b0ec1b..405101f 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonViewManager.mm
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuButton/RNIContextMenuButtonViewManager.mm
+@@ -8,11 +8,9 @@
+ #import "RNIContextMenuButton.h"
+ #import <objc/runtime.h>
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseViewUtils.h>)
+-#import <react_native_ios_utilities/RNIBaseViewUtils.h>
+-#else
+-#import <react-native-ios-utilities/RNIBaseViewUtils.h>
+-#endif
++#import "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseViewUtils.h)
+ 
+ #import "RCTBridge.h"
+ #import <React/RCTViewManager.h>
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.h
+index feb721a..e84505c 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.h
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.h
+@@ -5,11 +5,9 @@
+ //  Created by Dominic Go on 8/24/24.
+ //
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseView.h>)
+-#import <react_native_ios_utilities/RNIBaseView.h>
+-#else
+-#import <react-native-ios-utilities/RNIBaseView.h>
+-#endif
++#import "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseView.h)
+ 
+ #if RCT_NEW_ARCH_ENABLED
+ #import <React/RCTViewComponentView.h>
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.mm b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.mm
+index 99d7f45..8880a0f 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.mm
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuView.mm
+@@ -8,28 +8,22 @@
+ #import "RNIContextMenuView.h"
+ #import "../Swift.h"
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseView.h>)
+-#import <react_native_ios_utilities/RNIBaseView.h>
+-#import <react_native_ios_utilities/RNIContentViewParentDelegate.h>
+-#import <react_native_ios_utilities/UIApplication+RNIHelpers.h>
+-#import <react_native_ios_utilities/RNIObjcUtils.h>
+-#else
+-#import <react-native-ios-utilities/RNIBaseView.h>
+-#import <react-native-ios-utilities/RNIContentViewParentDelegate.h>
+-#import <react-native-ios-utilities/UIApplication+RNIHelpers.h>
+-#import <react-native-ios-utilities/RNIObjcUtils.h>
++#import "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseView.h)
++#import RNI_INCLUDE_HEADER(RNIContentViewParentDelegate.h)
++#import RNI_INCLUDE_HEADER(UIApplication+RNIHelpers.h)
++#import RNI_INCLUDE_HEADER(RNIObjcUtils.h)
++
++#if RCT_NEW_ARCH_ENABLED
++#import RNI_INCLUDE_HEADER(RNIBaseViewState.h)
+ #endif
+ 
+ #if RCT_NEW_ARCH_ENABLED
+ #include "RNIContextMenuViewComponentDescriptor.h"
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseViewState.h>)
+-#include <react_native_ios_utilities/RNIBaseViewState.h>
+-#include <react_native_ios_utilities/RNIBaseViewProps.h>
+-#else
+-#include <react-native-ios-utilities/RNIBaseViewState.h>
+-#include <react-native-ios-utilities/RNIBaseViewProps.h>
+-#endif
++#import RNI_INCLUDE_HEADER(RNIBaseViewState.h)
++#import RNI_INCLUDE_HEADER(RNIBaseViewProps.h)
+ 
+ #import <React/RCTConversions.h>
+ #import <React/RCTFabricComponentsPlugins.h>
 diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h
 index 2e30bbb..5aa27cd 100644
 --- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewComponentDescriptor.h
@@ -74,23 +190,80 @@ index 2e30bbb..5aa27cd 100644
  
  #include <react/renderer/core/ConcreteComponentDescriptor.h>
  
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewManager.mm b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewManager.mm
+index e10fe02..eac9da0 100644
+--- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewManager.mm
++++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewManager.mm
+@@ -8,11 +8,9 @@
+ #import "RNIContextMenuView.h"
+ #import <objc/runtime.h>
+ 
+-#if __has_include(<react_native_ios_utilities/RNIBaseViewUtils.h>)
+-#import <react_native_ios_utilities/RNIBaseViewUtils.h>
+-#else
+-#import <react-native-ios-utilities/RNIBaseViewUtils.h>
+-#endif
++#import "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseViewUtils.h)
+ 
+ #import "RCTBridge.h"
+ #import <React/RCTViewManager.h>
 diff --git a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h
-index a72e1fc..d0a0106 100644
+index a72e1fc..b94a6b5 100644
 --- a/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h
 +++ b/node_modules/react-native-ios-context-menu/ios/RNIContextMenuView/RNIContextMenuViewShadowNode.h
-@@ -8,9 +8,15 @@
+@@ -8,9 +8,11 @@
  #if __cplusplus
  #pragma once
  
-+#if __has_include(<react_native_ios_utilities/RNIBaseViewShadowNode.h>)
- #include <react_native_ios_utilities/RNIBaseViewShadowNode.h>
- #include <react_native_ios_utilities/RNIBaseViewProps.h>
- #include <react_native_ios_utilities/RNIBaseViewEventEmitter.h>
-+#else
-+#include <react-native-ios-utilities/RNIBaseViewShadowNode.h>
-+#include <react-native-ios-utilities/RNIBaseViewProps.h>
-+#include <react-native-ios-utilities/RNIBaseViewEventEmitter.h>
-+#endif
+-#include <react_native_ios_utilities/RNIBaseViewShadowNode.h>
+-#include <react_native_ios_utilities/RNIBaseViewProps.h>
+-#include <react_native_ios_utilities/RNIBaseViewEventEmitter.h>
++#include "../RNIHeaderUtils.h"
++
++#import RNI_INCLUDE_HEADER(RNIBaseViewShadowNode.h)
++#import RNI_INCLUDE_HEADER(RNIBaseViewProps.h)
++#import RNI_INCLUDE_HEADER(RNIBaseViewEventEmitter.h)
  
  #include <react/renderer/components/RNIContextMenuViewSpec/EventEmitters.h>
  #include <react/renderer/components/RNIContextMenuViewSpec/Props.h>
+diff --git a/node_modules/react-native-ios-context-menu/ios/RNIHeaderUtils.h b/node_modules/react-native-ios-context-menu/ios/RNIHeaderUtils.h
+new file mode 100644
+index 0000000..66b1219
+--- /dev/null
++++ b/node_modules/react-native-ios-context-menu/ios/RNIHeaderUtils.h
+@@ -0,0 +1,7 @@
++#pragma once
++
++#if __has_include(<react_native_ios_utilities/header>)
++    #define RNI_INCLUDE_HEADER(header) <react_native_ios_utilities/header>
++#else
++    #define RNI_INCLUDE_HEADER(header) <react-native-ios-utilities/header>
++#endif
+diff --git a/node_modules/react-native-ios-context-menu/ios/Swift.h b/node_modules/react-native-ios-context-menu/ios/Swift.h
+index f9814ee..c4f3879 100644
+--- a/node_modules/react-native-ios-context-menu/ios/Swift.h
++++ b/node_modules/react-native-ios-context-menu/ios/Swift.h
+@@ -4,10 +4,6 @@
+ //
+ //  Created by Dominic Go on 8/24/24.
+ //
+-
+-// When `use_frameworks!` is used, the generated Swift header is inside
+-// the module.
+-// Otherwise, it's available only locally with double-quoted imports.
+ #if __has_include(<react_native_ios_context_menu/react_native_ios_context_menu-Swift.h>)
+ #import <react_native_ios_context_menu/react_native_ios_context_menu-Swift.h>
+ 
+diff --git a/node_modules/react-native-ios-context-menu/react-native-ios-context-menu.podspec b/node_modules/react-native-ios-context-menu/react-native-ios-context-menu.podspec
+index 8f22bb2..2b1c37b 100644
+--- a/node_modules/react-native-ios-context-menu/react-native-ios-context-menu.podspec
++++ b/node_modules/react-native-ios-context-menu/react-native-ios-context-menu.podspec
+@@ -138,5 +138,5 @@ Pod::Spec.new do |s|
+ 
+   s.exclude_files = exclude_files
+   s.compiler_flags = compiler_flags
+-  s.private_header_files = ['ios/**/*+Private.h', 'ios/**/Swift.h']
++  s.private_header_files = ['ios/**/*+Private.h', 'ios/**/Swift.h', 'ios/**/RNIHeaderUtils.h']
+ end
